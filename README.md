@@ -105,6 +105,8 @@ python ssmn.py
 ---
 ##🎯 Standard SSMN (Custom Split Version)
 
+> Since this  custom version of standard SSMN. USAGE.md doesnt say about this.
+
 ### Key Features👁️ 
 - Sliding Window Attention: $O(n \cdot w)$ local attention (The Eyes).
 - 🧠 Neural Synaptic Memory: Fast-weight matrix $W_f$ (The Brain).
