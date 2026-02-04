@@ -102,6 +102,11 @@ python text_native_ssmn.py
 python ssmn.py
 ```
 
+**Custom SSMN:**
+``bash 
+python ssmn_custom.py
+```
+
 ---
 ## 🎯 Standard SSMN (Custom Split Version)
 
