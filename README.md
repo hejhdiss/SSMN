@@ -103,6 +103,82 @@ python ssmn.py
 ```
 
 ---
+##🎯 Standard SSMN (Custom Split Version)
+
+### Key Features👁️ 
+- Sliding Window Attention: $O(n \cdot w)$ local attention (The Eyes).
+- 🧠 Neural Synaptic Memory: Fast-weight matrix $W_f$ (The Brain).
+- 🏗️ Customizable Split: Dynamically allocate Static vs. Plastic layers via plastic_ratio.
+- 🎚️ Tunable Plasticity: Adjust $\eta$ (learning) and $\lambda$ (forgetting) for synaptic behavior.
+- ⚡ Linear Complexity: Process infinite sequences without a growing KV cache.
+
+### Architecture Flow
+
+```
+Input Vector
+            ↓
+    [Input Projection]
+            ↓
+ [Sliding Window Attention] ──► O(n·w) local context
+            ↓
+    [Hybrid Layer Stack] ─────► Total 6 Blocks
+            │
+    [Static Layers (1-R)] ────► "Cortex": Stable Logic & Features
+            │
+    [Plastic Layers (R)]  ────► "Hippocampus": Adaptive Memory
+            │
+            ├─► Synaptic Update: ΔW_f = η(h_t ⊗ h_t-1) - λW_f
+            └─► Fast-Weight Application: output += W_f · h
+            ↓
+    [Output Projection]
+            ↓
+       Output Vector
+```
+
+### Python Example
+
+```python
+from ssmn_custom import CustomSplitSSMN
+import numpy as np
+
+# Create network with CUSTOM split
+net = CustomSplitSSMN(
+    input_dim=128,
+    hidden_dim=256,
+    output_dim=64,
+    window_size=512,
+    plastic_ratio=0.5,      # 50% Static, 50% Plastic
+    plasticity_eta=0.01,    # η: Fast learning rate
+    decay_lambda=0.001      # λ: Memory decay rate
+)
+
+# Train on sequential data
+X_train = np.random.randn(1000, 128).astype(np.float32)
+y_train = np.random.randn(1000, 64).astype(np.float32)
+net.fit(X_train, y_train, epochs=20)
+
+# Analyze the specific custom configuration
+net.print_info()
+# Output will show: "Static Layers: 3, Plastic Layers: 3"
+```
+
+### 🔬 Key Concepts (Custom Update)
+#### 1. The Dynamic Split (plastic_ratio)
+Unlike the original fixed 80/20 model, you can now optimize the architecture for your specific data:
+- Low Ratio (0.1 - 0.3): Best for stable patterns (Language, Physics).
+- High Ratio (0.7 - 0.9): Best for rapidly shifting environments (Stock markets, Real-time RL).
+
+#### 2. Synaptic Update Magnitude
+The new version tracks how much the "Brain" is changing at every step.
+- Synaptic Energy: The total magnitude of stored memory in $W_f$.
+- Update Magnitude: How much the current input is warping the existing memory.
+
+#### 3. Stability-Adaptability 
+Trade-offBy adjusting the split, you control the Eigenvalue Stability:
+- Static Layers provide a "safety floor" for gradients.
+- Plastic Layers provide the "peak performance" for sequence-specific recall.
+
+---
 
 ## 🎯 Text-Native SSMN
 
