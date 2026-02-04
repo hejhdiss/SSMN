@@ -1,6 +1,6 @@
 # Sparse-Stream Memory Networks (SSMN)
 
-> Member of [MNNN]() Family 
+> Member of [MNNN](https://github.com/hejhdiss/MEMORY-NATIVE-NEURAL_NETWORK) Family 
 
 
 **Revolutionary neural architectures that replace expensive global attention with "continuous ink" of synaptic weights.**
