@@ -103,7 +103,7 @@ python ssmn.py
 ```
 
 ---
-##🎯 Standard SSMN (Custom Split Version)
+## 🎯 Standard SSMN (Custom Split Version)
 
 > Since this  custom version of standard SSMN. USAGE.md doesnt say about this.
 
