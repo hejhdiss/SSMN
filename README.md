@@ -61,6 +61,9 @@ gcc -shared -fPIC -o text_native_ssmn.so text_native_ssmn.c -lm -O3
 
 # Standard SSMN
 gcc -shared -fPIC -o ssmn.so ssmn.c -lm -O3
+
+# Custom SSMN
+gcc -shared -fPIC -o ssmn_custom.so ssmn_custom.c -lm -O3
 ```
 
 **Windows:**
@@ -70,6 +73,9 @@ gcc -shared -o text_native_ssmn.dll text_native_ssmn.c -lm -O3
 
 # Standard SSMN
 gcc -shared -o ssmn.dll ssmn.c -lm -O3
+
+# Custom SSMN
+gcc -shared -o ssmn_custom.dll ssmn_custom.c -lm -O3
 ```
 
 **Mac (with Homebrew GCC):**
@@ -79,6 +85,9 @@ gcc -shared -fPIC -o text_native_ssmn.dylib text_native_ssmn.c -lm -O3
 
 # Standard SSMN
 gcc -shared -fPIC -o ssmn.dylib ssmn.c -lm -O3
+
+# Custom SSMN
+gcc -shared -fPIC -o ssmn_custom.so ssmn_custom.c -lm -O3
 ```
 
 ### 2. Run Python Demos
